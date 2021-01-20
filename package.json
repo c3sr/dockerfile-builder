@@ -4,10 +4,10 @@
   "private": true,
   "dependencies": {
     "@cerebral/forms": "next",
-    "@cerebral/http": "next",
+    "@cerebral/http": "^2.0.1",
     "@cerebral/router": "next",
-    "@cerebral/storage": "next",
-    "@cerebral/useragent": "next",
+    "@cerebral/storage": "^1.1.0",
+    "@cerebral/useragent": "^2.2.0",
     "@types/google-protobuf": "^3.2.7",
     "ansi_up": "^2.0.2",
     "babel-preset-react": "^6.24.1",

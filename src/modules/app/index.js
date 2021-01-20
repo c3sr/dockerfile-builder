@@ -1,4 +1,5 @@
 import appLoaded from "./signals/appLoaded";
+import archChanged from "./signals/archChanged";
 import buildButtonClicked from "./signals/buildButtonClicked";
 import terminalOutputAppended from "./signals/terminalOutputAppended";
 import codeEditorFileChanged from "./signals/codeEditorFileChanged";
@@ -31,7 +32,8 @@ export default {
     },
     editor: {
       currentFile: null,
-      mode: "docker"
+      mode: "docker",
+      arch: "" // Added
     }
   },
   signals: {
@@ -42,6 +44,7 @@ export default {
     terminalOutputAppended,
     codeEditorFileChanged,
     codeEditorFilesChanged,
+    archChanged, // Added
     terminalClosed,
     navbarClicked
   }

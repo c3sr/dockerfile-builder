@@ -1,15 +1,6 @@
 // @flow
 
-import {
-  Dropdown,
-  Icon,
-  Menu,
-  Segment,
-  Popup,
-  Modal,
-  Button,
-  Form
-} from "semantic-ui-react";
+import { Dropdown, Icon, Menu, Segment, Popup, Modal, Button, Form } from "semantic-ui-react";
 import { If, Then } from "react-if";
 
 import React from "react";
@@ -17,15 +8,7 @@ import idx from "idx";
 import classNames from "classnames";
 // import PropTypes from "prop-types";
 import ICodeMirror from "codemirror";
-import {
-  endsWith,
-  isUndefined,
-  size,
-  keys,
-  head,
-  isNil,
-  toLower
-} from "lodash";
+import { endsWith, isUndefined, size, keys, head, isNil, toLower } from "lodash";
 import FileType from "../../thirdparty/filetype";
 
 import "codemirror/addon/dialog/dialog";
@@ -54,6 +37,7 @@ type Props = {
   mode: string,
   withMenuBar: boolean,
   currentFile: string,
+  arch: string, // Added
   files: { [string]: File },
   fontSize: number,
   readOnly: boolean,
@@ -61,6 +45,7 @@ type Props = {
   onNewIconClick: (Event => void) | void,
   onSaveIconClick: ((Event, string | null | void) => void) | void,
   onFileSelectClick: (Object => void) | void,
+  onArchSelectClick: (Object => void) | void, // Added
   onPushClick: (() => void) | void,
   onBuildClick: (() => void) | void
 };
@@ -68,6 +53,7 @@ type Props = {
 type State = {
   files: { [string]: File },
   currentFile: string,
+  arch: string, // Added
   pushModalOpen: boolean,
   pushOptions: {
     username: string,
@@ -82,6 +68,7 @@ export default class CodeMirror extends React.Component<Props, State> {
   static defaultProps: Props = {
     mode: "docker",
     currentFile: "",
+    arch: "power", // Added
     withMenuBar: false,
     files: {},
     fontSize: 14,
@@ -90,6 +77,7 @@ export default class CodeMirror extends React.Component<Props, State> {
     onNewIconClick: undefined,
     onSaveIconClick: undefined,
     onFileSelectClick: undefined,
+    onArchSelectClick: undefined, // Added
     onPushClick: undefined,
     onBuildClick: undefined
   };
@@ -98,6 +86,7 @@ export default class CodeMirror extends React.Component<Props, State> {
     this.state = {
       files: this.props.files,
       currentFile: this.props.currentFile,
+      arch: this.props.arch, // Added
       pushModalOpen: false,
       pushOptions: {
         username: "",
@@ -273,8 +262,7 @@ export default class CodeMirror extends React.Component<Props, State> {
 
   async update() {
     let { files, currentFile } = this.state;
-    currentFile =
-      size(files) === 1 && currentFile === "" ? head(keys(files)) : currentFile;
+    currentFile = size(files) === 1 && currentFile === "" ? head(keys(files)) : currentFile;
     const value = idx(this.state, _ => _.files[currentFile].content) || "";
     this.editor.setValue(value);
 
@@ -303,6 +291,17 @@ export default class CodeMirror extends React.Component<Props, State> {
       this.props.onFileSelectClick({ file: data.text });
     }
   };
+  // Added below
+  handleArchSelectClick = (e: Event, data: Object) => {
+    this.setState({
+      arch: data.text
+    });
+    this.forceUpdate(this.update);
+    if (this.props.onArchSelectClick) {
+      this.props.onArchSelectClick({ arch: data.text });
+    }
+  };
+
   handleBuildIconClick = (e: Event, data: Object) => {
     if (this.props.onBuildClick) {
       this.props.onBuildClick();
@@ -337,19 +336,12 @@ export default class CodeMirror extends React.Component<Props, State> {
     const { pushModalOpen } = this.state;
 
     const mainElement = (
-      <div
-        ref={ref => (this.codeElement = ref)}
-        className={classNames("editor")}
-      />
+      <div ref={ref => (this.codeElement = ref)} className={classNames("editor")} />
     );
     if (withMenuBar === false) {
       return mainElement;
     }
-    if (
-      isNil(onNewIconClick) &&
-      isNil(onSaveIconClick) &&
-      size(this.state.files) === 0
-    ) {
+    if (isNil(onNewIconClick) && isNil(onSaveIconClick) && size(this.state.files) === 0) {
       return mainElement;
     }
 
@@ -375,7 +367,7 @@ export default class CodeMirror extends React.Component<Props, State> {
               <Menu.Menu position="left">
                 <Dropdown item simple text="Files">
                   <Dropdown.Menu>
-                    {keys(files).map((name: string) =>
+                    {keys(files).map((name: string) => (
                       <Dropdown.Item
                         disabled={!isNil(FileType(files[name].content))}
                         text={name}
@@ -383,13 +375,28 @@ export default class CodeMirror extends React.Component<Props, State> {
                         key={files[name].uuid}
                         onClick={this.handleFileSelectClick}
                       />
-                    )}
+                    ))}
                   </Dropdown.Menu>
                 </Dropdown>
               </Menu.Menu>
             </Then>
           </If>
           <Menu.Menu position="right">
+            {/* Added => */}
+            <Dropdown item simple text="Architecture">
+              <Dropdown.Menu>
+                <Dropdown.Item
+                  // disabled={!isNil(FileType(files[name].content))}
+                  text="Power"
+                  icon="desktop"
+                  // key={files[name].uuid}
+                  onClick={this.handleArchSelectClick}
+                />
+                <Dropdown.Item text="Z" icon="desktop" onClick={this.handleArchSelectClick} />
+                <Dropdown.Item text="AMD64" icon="desktop" onClick={this.handleArchSelectClick} />
+              </Dropdown.Menu>
+            </Dropdown>
+            {/* <= Added */}
             <Menu.Item name="build" onClick={this.handleBuildIconClick}>
               <Popup trigger={<Icon name="setting" />} content="Build image" />
             </Menu.Item>
@@ -404,11 +411,7 @@ export default class CodeMirror extends React.Component<Props, State> {
         <Segment attached="bottom" style={{ paddingTop: 0 }}>
           {mainElement}
         </Segment>
-        <Modal
-          open={pushModalOpen}
-          dimmer="blurring"
-          onClose={this.handlePushModalClose}
-        >
+        <Modal open={pushModalOpen} dimmer="blurring" onClose={this.handlePushModalClose}>
           <Modal.Header>Push Docker Image Configuration</Modal.Header>
           <Modal.Content>
             <Modal.Description>

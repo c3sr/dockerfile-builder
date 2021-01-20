@@ -23,6 +23,8 @@ client:
   build_file: rai_build
 dockerbuilder:
   broker_queue_name: rai_ppc64le_d4p
+#  rai_ppc64le_d4p_p9 : z
+#  rai_amd64_ece408
 pubsub:
   endpoints:
     - pubsub.rai-project.com:6379

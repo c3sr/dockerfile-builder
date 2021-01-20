@@ -42,14 +42,14 @@ const controller = Controller({
           allowedTypes: [File, Blob]
         }),
   modules: {
-    app,
-    useragent: UseragentModule({
-      media: {
-        unsupported: "(max-width: 550px)",
-        mobile: "(max-width: 700px)",
-        desktop: "(min-width: 701px)"
-      }
-    })
+    app
+    // useragent: UseragentModule({
+    //   media: {
+    //     unsupported: "(max-width: 550px)",
+    //     mobile: "(max-width: 700px)",
+    //     desktop: "(min-width: 701px)"
+    //   }
+    // })
   },
   providers: [ContextProvider({ uuid }), HttpProvider()]
 });
