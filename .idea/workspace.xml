@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.agignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.bumpversion.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.cfignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.dockerfile_builder_config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.flowconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.goreleaser.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dockerfile-builder.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.realize/realize.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gopkg.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gopkg.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/INSTALL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE.TXT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README_BETA.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/VERSION" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/build.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/namegenerator.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/root.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/serve.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/static_content.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/upload.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dockerfiles/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dockerfiles/Dockerfile.amd64" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dockerfiles/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manifest.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/build/go/_proto/raiprojectcom/docker/build_service.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb_service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb_service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/raiprojectcom/docker/build_service.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/build_go_assets.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/gofat.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/install-protobuf.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/protogen.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/secret.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/api.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/assets.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/bindata_assetfs.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/dockerbuild.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/init.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/utils.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_fixtures/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_fixtures/test1.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_fixtures/test2.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/Dockerfiles-ppc64le.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/lato-bold-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/lato-bold-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/lato-bold-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/lato-bold-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/lato-regular-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/lato-regular-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/lato-regular-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/fonts/lato-regular-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/C3SR_bw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/C3SR_color.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/C3SR_color_big.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/UIUC_Logo_University_of_Illinois_at_Urbana-Champaign.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/browsers/chrome.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/browsers/firefox.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/browsers/safari.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/carml.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/carml_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/i_mark_bold.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/images/uiuc_logo_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/colors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/common/colors.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App/App.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App/Footer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App/Logo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App/Navbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App/Snackbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Editor/CodeMirror.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Editor/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Editor/mode/cuda.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Editor/theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Loading/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Markdown/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pages/About.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pages/About.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pages/Home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pages/Images.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pages/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Terminal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Terminal/themes/afterglow-ansitheme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Terminal/themes/afterglow-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Terminal/themes/ansi-base16-railscasts-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Terminal/themes/ansi-base16-railscasts-theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Terminal/themes/tomorrow-night-eighties-ansitheme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Terminal/themes/tomorrow-night-eighties-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UploadArea/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/actions/buildImage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/actions/checkForDockerfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/actions/fromTextFile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/actions/fromZipFile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/actions/removeZipRoot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/actions/toZipFile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/chains/onError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/chains/resetError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/operators/detectFileType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/appLoaded.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/archChanged.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/buildButtonClicked.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/codeEditorFileChanged.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/codeEditorFilesChanged.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/fileUploaded.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/navbarClicked.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/terminalClosed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/app/signals/terminalOutputAppended.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/registerServiceWorker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/semantic-ui-theme/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/semantic-ui-theme/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/semantic-ui-theme/site/elements/flag.variables" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/semantic-ui-theme/site/globals/site.overrides" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/semantic-ui-theme/site/globals/site.variables" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/semantic-ui-theme/theme.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/thirdparty/filetype.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/version.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Editor</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path>/usr/local/bin/flow</exe-path>
+    <other-services-enabled>false</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectId" id="1nLefWakjCz6GS55GydHQGj1NJ4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="" />
+      <created>1502024253690</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1502024253690</updated>
+      <workItem from="1502024255414" duration="979000" />
+      <workItem from="1502026644675" duration="1924000" />
+      <workItem from="1507334679508" duration="21000" />
+      <workItem from="1507334709793" duration="2000" />
+      <workItem from="1611173904169" duration="514000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb_service.js" />
+        <option value="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb_service.js" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,114 @@
+language: node_js
+node_js:
+- "8"
+dist: xenial
+sudo: false
+cache:
+  yarn: true
+  directories:
+  - node_modules
+addons:
+  apt:
+    sources:
+    - sourceline: ppa:masterminds/glide
+    - sourceline: ppa:ubuntu-toolchain-r/test
+    packages:
+    - glide
+    - build-essential
+
+before_install:
+- echo ${TRAVIS_NODE_VERSION}
+- eval "$(curl -sL https://raw.githubusercontent.com/travis-ci/gimme/master/gimme | bash)"
+- go env
+- export GOPATH=$HOME/gopath
+- export PATH=$HOME/gopath/bin:$PATH
+- mkdir -p ${GOPATH}/src/github.com/rai-project/dockerfile-builder
+- rsync -az ${TRAVIS_BUILD_DIR}/ ${GOPATH}/src/github.com/rai-project/dockerfile-builder/
+- export TRAVIS_BUILD_DIR=${GOPATH}/src/github.com/rai-project/dockerfile-builder
+- cd ${GOPATH}/src/github.com/rai-project/dockerfile-builder
+- bash scripts/install-protobuf.sh
+install:
+- npm install -g yarn
+- gem install fpm
+- cd ${TRAVIS_BUILD_DIR}
+- go get github.com/mjibson/esc
+- go get github.com/ahmetb/govvv
+- go get github.com/franciscocpg/gox
+- go get github.com/tcnksm/ghr
+- go get github.com/jteeuwen/go-bindata/...
+- go get github.com/elazarl/go-bindata-assetfs/...
+- go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+- go get -u google.golang.org/grpc
+- go get golang.org/x/crypto/acme/autocert
+- go get golang.org/x/sys/unix
+- ls -R $HOME/protobuf
+- curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+- yarn install
+- yarn build
+- yarn bundle
+- dep ensure -v
+script:
+- cd ${TRAVIS_BUILD_DIR} && go generate
+- VERSION=$(cat ./VERSION)
+- echo "VERSION = ${VERSION}"
+- DIST=${TRAVIS_BUILD_DIR}/dist/dockerfile-builder/stable
+- >
+  CGO_ENABLED=0 gox
+  -verbose
+  -os="linux darwin"
+  -arch="amd64"
+  -osarch="linux/ppc64le"
+  -ldflags="$(govvv -flags)
+  -s -w -X main.AppSecret=${APP_SECRET}
+  -extldflags \"-static\""
+  -output="${DIST}/${VERSION}/{{.OS}}-{{.Arch}}/{{.Dir}}"
+  .
+before_deploy:
+- mkdir -p ${DIST}/${VERSION}/binaries
+- mkdir -p ${DIST}/latest
+- tar --transform 's/.*\///g' -czvf ${DIST}/${VERSION}/binaries/darwin-amd64   ${DIST}/${VERSION}/darwin-amd64/dockerfile-builder    ${TRAVIS_BUILD_DIR}/LICENSE.TXT  ${TRAVIS_BUILD_DIR}/VERSION
+- tar --transform 's/.*\///g' -czvf ${DIST}/${VERSION}/binaries/linux-amd64    ${DIST}/${VERSION}/linux-amd64/dockerfile-builder     ${TRAVIS_BUILD_DIR}/LICENSE.TXT  ${TRAVIS_BUILD_DIR}/VERSION
+- cp ${DIST}/${VERSION}/binaries/darwin-amd64  ${DIST}/latest/darwin-amd64.tar.gz
+- cp ${DIST}/${VERSION}/binaries/linux-amd64   ${DIST}/latest/linux-amd64.tar.gz
+- rm -fr ${DIST}/${VERSION}/binaries
+- echo "Copying latest directory to ${DIST}/${TRAVIS_COMMIT}"
+- cp -r ${DIST}/latest ${DIST}/${TRAVIS_COMMIT}
+- rm -fr ${TRAVIS_BUILD_DIR}/glide.yaml ${TRAVIS_BUILD_DIR}/glide.lock
+- cd ${TRAVIS_BUILD_DIR}
+- cp ${DIST}/${VERSION}/linux-amd64/dockerfile-builder .
+after_deploy:
+- cf logs dockerfile-builder --recent
+- echo "releasing v${VERSION}..."
+- ghr -t "$GITHUB_TOKEN" -u rai-project -r dockerfile-builder --replace "v${VERSION}"
+  "${DIST}/latest"
+deploy:
+- provider: bluemixcloudfoundry
+  edge: true
+  api: https://api.ng.bluemix.net
+  username: "$BLUEMIX_USERNAME"
+  password: "$BLUEMIX_PASSWORD"
+  organization: IBM-ILLINOIS-C3SR
+  space: dev
+  manifest: manifest.yml
+  on:
+    repo: rai-project/dockerfile-builder
+- provider: s3
+  access_key_id: AKIAIAFSJLCCOYB5V3EQ
+  secret_access_key:
+    secure: SmAJqNftOvfIClayyLJalKqkdvx/AU1ovDsDTXXgC3rTDT4JyuVUejyQYO2OCDZzMq4WAtZ1zhhNngy7T5E3LUhpUXCsOP1PaxGUkdLVPWbZ9I0SsPZbJ8u/UUyaMNlDNfumlPs9iQhhmwIAJ6ryHIzlcGbqVSGA8BPg77rLdbV4RTxEmOeICpcO1egs/7/FqCRUMTJm3765tzWKdDfCfUKImuDlif2lYmY6ED+gTNBJr2qgJ08QnJwyxnqdPoZVGdOFWE+wV1YbsdL7hkelbXlRab6ofRgd2BoyeD3X1lUBQQEISS8HEpmoH5PdrCGXwz/szWhZfdMBJ0tYqLukr9dORHTkvhs0S78Sghj/gj/c1doudZnrt9PnpMm72ZJuUTfh+b3BLZ7heMLvaMVS9uu345eSVi7Diw/Hvqvl4c7CU0RoXl6MPLw1Q258D8HQABehMsaXBF/pkB4/DuU3oQWeE3dLSQLocKQyE6uJKHD4PYt859WKT6gz9KR/iYOG705Oo/x4R1un+t5oJjbjkf6Nh5OXVpUzrxBhcuhO+tb3azVA+5UQUr2iTw/uyibcHJq48h6piAnKbe4ALkY6nN/6PImoGJ0MbArNszXyckEccuvz4iX+R2Y/nE5SFdHIxBGR6iqX9SoGLP1KooM+Cn0MsnN3wCx++y7R7jk8cqQ=
+  bucket: files.rai-project.com
+  local-dir: dist
+  upload-dir: dist
+  acl: public_read
+  skip_cleanup: true
+  detect_encoding: true
+  on:
+    repo: rai-project/dockerfile-builder
+
+env:
+  global:
+  - PROTOBUF_VER="3.3.0"
+  - GIMME_GO_VERSION=1.10
+  - secure: f/wbYvPjKOAevjZ/m72yqJfmQnCk2ECgEVSLFMjl9Tp29Nzzl4lZs2Y3yh5B1r9nXU7uXn8yDD8OYBfp1os12JpYxvd4zSGrYpNeNHpPIhylRPFfea4z1vvE4BNAqdxjuFwdaDm6ILkc1RKM5R5EoFxTL0NdLemAJSQASEESSa6rdVnfoHxPKfVSIYLOjL1cP8cRGA1mLWZ+MZAEu+xETbyPMpnwROwvapwhjvl/YjMzE38SH/PQwUTGsiIkC/nY6WYl/oJKgnla40fXvq1bdcqCA/fbah3arv+Eq25Yp3Am/ZVYio3U05y3pT8fmpVvLN8AcU3diVrbZTmnTSrXoPuy4TdZL6dscfiMLMRJ5gLtQJgEZOkaBlDqBLFrS4pRmbVMd7cUMFMu4+G19pbCsNZVn5O2aKpnamVtOddWEqXOhGdYyCYlh3wV2ynFEDu2rZF30/ckivFI76jpH/oi5m78Qb8hWQe/TzPMDPm9w8NQOOhln03465DUyojVwvEEyELX3CTulwB0E6WrL5fEa9b+j0vyG3wUCY12jG2lUiMHoDnmbt4yRjqRZr9X1PjCg7T4N5dg8OGSCwwaf546aKGNvIZGXi+PM455QRLN7GHTC5zH0zZPn42da8NzsO1PlHx9xJnIEHByl8TdxBoMXB53H+C+0COkyFiMaxarbuY=
+  - secure: neWJaGfomnNnNUsdn6nKULkATBy9VYiyWeIgQsL3dJrchRsboYJRcbvj2SFXjxkV9M7+nOZprr8n6qcj9NLRj4gq0ciAtebXIbfqryC3bL8t+p03XSkkz+6bLxmIZvaw1+p59zLcvBIsaJXh5b8Gc/RSxaP2jmsDc8YCBIb80x261xc31ukSL3fY5Vb9Vp31Q+RTNO6EyDQl+082PMWCcNzgHUVs7r0cEEwU11Zchcz74TSWpFhcOHHkj/RG/zaRdr1nzvAVhWmfvYshW1rqpbAkHaxWmzDnfAkJstKqcjlsksyLjBHat8NYQf+oYfYLZjLQOHnAXdU+vsmkKEelI70KmIWrDN4/Gjx0GSysncVb9VqNSiAyc3+bhUilDvTGA9uQnFd29yXnGKvURdvCmNQp3getz7ZRd7EJaDrT9um68rqdC3rok0QwFkVkP3Sc5uD7ii63Cnx/RAXsT7EED67X+2dg/MTlGos1vPOgUDBtmxp4W6u9+3vqx2SlvZodz7Qs3NYZGIk6eoz8UgWu78Pbed8PJqGkImRUDw8pzLmSFl+r6ON0xzyPN8j5u9d47s6BU6xL7y/4Lq5hyH+OusQIOa0IkvgEwaM8gpm2rp1EsmvCy4u6lEmTyu84l8P9h2q0CFdSs3mtWlaEs5bkiOm8qpAoVINg9SQhu2+rsrs=
+  - secure: Li5x5DGn0SnNkpfxMk09GeCqjnJUapyMjW4gXbgNUxxJGrOa5SJ1rRSRau2lM+MD6f1KzOpPNA0+pOF+bKH+7etqB341y5pHUp6Def6bb4wsvEVSnQyfX5a+aAPXozpzGUDD7MJkPRzoqx9XP5Vawdgitj2pL6+iGjm0/P3ccDsoZQNQUIezP/FnQBQjcvlOiUvZjKRp/4waLWb1m1hpxuMzv52EPxHLMNn/MtCm9MH5YPyQhbFJEma4Loxe7O/FFMWu5SjNgHt7tvy5pGw+2vJkUpQrON40Wr9P4iUJaj1uAUAN7dr0ra6rVRuS2wjFRuu1PKFFQyzA1ZtqO9rvoEBZ5QdV2gpHI+HIZ2vR8gdLfgzKPjbcwMTy5j1MG3wVLbUaWfLeMRI4/aFPshPUCKyXgCv3R/VMhAna284KD/GLmrCZYL9NcZqrfjP1Q2CfqGwRVqSBLSPZPIHVaQt1UIRUXe2itJjPmVPZ8NZQhnUF3W61FwalTVgTRUT5SQMLXcuB9gZYfumdAl5uTPA1XB3kYT8qhgUpolo4O3J/+80Cu5x80m/EfeP/w3P0H6GLDgMZMFqKNhR5RD5qccSCKohtj1n953XDE4KFHD8iGOTBN1S3MGYw0ssRqfnBa6iIuWnao+VZ68WyEGGSdgEDIDKJvNlW2JvmBiBtTG6ZisY=

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+
+package raiprojectcom.docker;
+
+message PushOptions {
+  string username = 1;
+  string password = 2;
+  string image_name = 3;
+}
+
+message DockerBuildRequest {
+  string id = 1;
+  string image_name = 2;
+  string content = 3;
+  PushOptions push_options = 4;
+}
+
+message DockerBuildResponse {
+  string id = 1;
+  string content = 2;
+  ErrorStatus error = 3;
+}
+
+message ErrorStatus {
+  string message = 1;
+  repeated google.protobuf.Any details = 2;
+}
+
+service DockerService {
+  rpc Build(DockerBuildRequest) returns (stream DockerBuildResponse) {}
+}
