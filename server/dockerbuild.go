@@ -17,7 +17,7 @@ import (
 	"github.com/rai-project/broker/sqs"
 	"github.com/rai-project/broker/rabbitmq"
 	"github.com/rai-project/config"
-	pb "github.com/rai-project/dockerfile-builder/proto/build/go/_proto/raiprojectcom/docker"
+	pb "github.com/c3sr/dockerfile-builder/proto/build/go/_proto/raiprojectcom/docker"
 	"github.com/rai-project/model"
 	"github.com/rai-project/pubsub"
 	"github.com/rai-project/pubsub/redis"

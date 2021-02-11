@@ -1,6 +1,6 @@
 package main
 
-import "github.com/c3sr/config"
+import "github.com/rai-project/config"
 
 var AppSecret string
 

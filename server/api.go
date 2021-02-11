@@ -9,7 +9,7 @@ import (
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	echo "github.com/labstack/echo"
 	"github.com/rai-project/config"
-	pb "github.com/rai-project/dockerfile-builder/proto/build/go/_proto/raiprojectcom/docker"
+	pb "github.com/c3sr/dockerfile-builder/proto/build/go/_proto/raiprojectcom/docker"
 )
 
 type dockerBuildRequest struct {
