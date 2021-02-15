@@ -33,7 +33,7 @@ export default {
     editor: {
       currentFile: null,
       mode: "docker",
-      arch: "" // Added
+      arch: "Docker"
     }
   },
   signals: {
@@ -44,7 +44,7 @@ export default {
     terminalOutputAppended,
     codeEditorFileChanged,
     codeEditorFilesChanged,
-    archChanged, // Added
+    archChanged,
     terminalClosed,
     navbarClicked
   }

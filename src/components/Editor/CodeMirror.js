@@ -37,7 +37,7 @@ type Props = {
   mode: string,
   withMenuBar: boolean,
   currentFile: string,
-  arch: string, // Added
+  arch: string,
   files: { [string]: File },
   fontSize: number,
   readOnly: boolean,
@@ -45,7 +45,7 @@ type Props = {
   onNewIconClick: (Event => void) | void,
   onSaveIconClick: ((Event, string | null | void) => void) | void,
   onFileSelectClick: (Object => void) | void,
-  onArchSelectClick: (Object => void) | void, // Added
+  onArchSelectClick: (Object => void) | void,
   onPushClick: (() => void) | void,
   onBuildClick: (() => void) | void
 };
@@ -53,7 +53,7 @@ type Props = {
 type State = {
   files: { [string]: File },
   currentFile: string,
-  arch: string, // Added
+  arch: string,
   pushModalOpen: boolean,
   pushOptions: {
     username: string,
@@ -68,7 +68,7 @@ export default class CodeMirror extends React.Component<Props, State> {
   static defaultProps: Props = {
     mode: "docker",
     currentFile: "",
-    arch: "power", // Added
+    arch: "power",
     withMenuBar: false,
     files: {},
     fontSize: 14,
@@ -77,7 +77,7 @@ export default class CodeMirror extends React.Component<Props, State> {
     onNewIconClick: undefined,
     onSaveIconClick: undefined,
     onFileSelectClick: undefined,
-    onArchSelectClick: undefined, // Added
+    onArchSelectClick: undefined,
     onPushClick: undefined,
     onBuildClick: undefined
   };
@@ -86,7 +86,7 @@ export default class CodeMirror extends React.Component<Props, State> {
     this.state = {
       files: this.props.files,
       currentFile: this.props.currentFile,
-      arch: this.props.arch, // Added
+      arch: this.props.arch,
       pushModalOpen: false,
       pushOptions: {
         username: "",
@@ -291,7 +291,7 @@ export default class CodeMirror extends React.Component<Props, State> {
       this.props.onFileSelectClick({ file: data.text });
     }
   };
-  // Added below
+
   handleArchSelectClick = (e: Event, data: Object) => {
     this.setState({
       arch: data.text

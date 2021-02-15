@@ -11,24 +11,24 @@ export default connect(
     entry: state`app.files.entry`,
     model: state`app.editor.mode`,
     currentFile: state`app.editor.currentFile`,
-    arch: state`app.editor.arch`, // Added
+    arch: state`app.editor.arch`,
     buildButtonClicked: signal`app.buildButtonClicked`,
     pushButtonClicked: signal`app.pushButtonClicked`,
     codeEditorFileChanged: signal`app.codeEditorFileChanged`,
     codeEditorFilesChanged: signal`app.codeEditorFilesChanged`,
-    archChanged: signal`app.archChanged` // Added
+    archChanged: signal`app.archChanged`
   },
   function Editor({
     files,
     entry,
     mode,
     currentFile,
-    arch, // Added
+    arch,
     buildButtonClicked,
     pushButtonClicked,
     codeEditorFileChanged,
     codeEditorFilesChanged,
-    archChanged // Added
+    archChanged
   }) {
     if (isNil(files) || isEmpty(files)) {
       return <div />;
@@ -38,12 +38,12 @@ export default connect(
         mode={mode}
         files={files}
         currentFile={currentFile || entry}
-        arch={arch} // Added
+        arch={arch}
         withMenuBar={true}
         onBuildClick={buildButtonClicked}
         onPushClick={pushButtonClicked}
         onFileSelectClick={codeEditorFileChanged}
-        onArchSelectClick={archChanged} // Added
+        onArchSelectClick={archChanged}
         onFilesChanged={codeEditorFilesChanged}
       />
     );
