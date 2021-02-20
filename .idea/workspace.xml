@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.dockerfile_builder_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerfile_builder_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gopkg.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gopkg.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secret.go" beforeDir="false" afterPath="$PROJECT_DIR$/secret.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/api.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dockerbuild.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/dockerbuild.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/version.go" beforeDir="false" afterPath="$PROJECT_DIR$/version.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,17 +59,6 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="dockerfile-builder" />
       <working_directory value="$PROJECT_DIR$" />
@@ -114,6 +96,7 @@
       <workItem from="1611173904169" duration="514000" />
       <workItem from="1612814121127" duration="800000" />
       <workItem from="1613079753194" duration="1529000" />
+      <workItem from="1613855187952" duration="928000" />
     </task>
     <servers />
   </component>
