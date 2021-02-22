@@ -5,14 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/build/go/_proto/raiprojectcom/docker/build_service.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/build/go/_proto/raiprojectcom/docker/build_service.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.js" beforeDir="false" afterPath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/raiprojectcom/docker/build_service.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/raiprojectcom/docker/build_service.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/api.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/bindata_assetfs.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/bindata_assetfs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dockerbuild.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/dockerbuild.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/app/actions/buildImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/app/actions/buildImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/app/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,19 +159,20 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/server/dockerbuild.go</url>
-          <line>110</line>
-          <option name="timeStamp" value="17" />
+          <line>107</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/server/dockerbuild.go</url>
-          <line>144</line>
-          <option name="timeStamp" value="18" />
+          <line>145</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="GoApplicationRunConfiguration">
         <watch expression="req.Arch" language="go" />
+        <watch expression="serverArch" language="go" />
       </configuration>
     </watches-manager>
   </component>

@@ -12,6 +12,7 @@ require (
 	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/elazarl/go-bindata-assetfs v1.0.1
 	github.com/fatih/color v1.7.0
+	github.com/go-bindata/go-bindata v3.1.2+incompatible // indirect
 	github.com/go-playground/locales v0.12.1 // indirect
 	github.com/go-playground/universal-translator v0.16.0 // indirect
 	github.com/golang/protobuf v1.4.2

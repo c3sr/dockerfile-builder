@@ -108,7 +108,6 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
 	if req.Id == "" || !bson.IsObjectIdHex(req.Id) {
 		req.Id = bson.NewObjectId().Hex()
 	}
-	fmt.Println(req.Arch)
 
 	go func() {
 		for msg := range messages {
@@ -143,6 +142,15 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
 
 func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 	id := req.Id
+
+  switch req.Arch {
+  case "Power":
+    SetServerArch("ppc64le")
+  case "Z":
+   SetServerArch("s390x") // Don't know if this works yet
+  case "AMD64":
+    SetServerArch("amd64")
+  }
 
 	messages <- colored.Add(color.FgGreen).Sprintf("✱") + colored.Sprintf(" Submitting your docker build")
 
