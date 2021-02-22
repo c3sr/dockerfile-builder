@@ -10,7 +10,7 @@ import navbarClicked from "./signals/navbarClicked";
 
 export default {
   state: {
-    name: process.env.APP_NAME || "Docker for Power",
+    name: process.env.APP_NAME || "Docker for everything",
     state: {
       loading: true,
       saving: false,

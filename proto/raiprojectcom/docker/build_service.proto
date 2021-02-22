@@ -15,6 +15,7 @@ message DockerBuildRequest {
   string image_name = 2;
   string content = 3;
   PushOptions push_options = 4;
+  string arch = 5;
 }
 
 message DockerBuildResponse {

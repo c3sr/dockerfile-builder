@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="" />
+    <list default="true" id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/build/go/_proto/raiprojectcom/docker/build_service.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/build/go/_proto/raiprojectcom/docker/build_service.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.js" beforeDir="false" afterPath="$PROJECT_DIR$/proto/build/ts/_proto/raiprojectcom/docker/build_service_pb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/raiprojectcom/docker/build_service.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/raiprojectcom/docker/build_service.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/api.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dockerbuild.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/dockerbuild.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/app/actions/buildImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/app/actions/buildImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/app/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,6 +71,7 @@
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
@@ -71,14 +84,18 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build dockerbuild.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build and serve" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="dockerfile-builder" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
+      <parameters value="serve" />
+      <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$/server/dockerbuild.go" />
       <package value="github.com/rai-project/dockerfile-builder" />
       <directory value="$PROJECT_DIR$" />
-      <method v="2" />
+      <method v="2">
+        <option name="GoBeforeRunTask" command="get" />
+        <option name="GoBeforeRunTask" command="build" />
+      </method>
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="dockerfile-builder" />
@@ -93,7 +110,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build dockerbuild.go" />
+        <item itemvalue="Go Build.go build and serve" />
       </list>
     </recent_temporary>
   </component>
@@ -142,6 +159,27 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/server/dockerbuild.go</url>
+          <line>110</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/server/dockerbuild.go</url>
+          <line>144</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoApplicationRunConfiguration">
+        <watch expression="req.Arch" language="go" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

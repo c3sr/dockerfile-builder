@@ -28,6 +28,7 @@ import (
 
 type dockerbuildService struct {
 	awsSession *session.Session
+	pb.UnimplementedDockerServiceServer
 }
 
 var (
@@ -107,6 +108,7 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
 	if req.Id == "" || !bson.IsObjectIdHex(req.Id) {
 		req.Id = bson.NewObjectId().Hex()
 	}
+	fmt.Println(req.Arch)
 
 	go func() {
 		for msg := range messages {

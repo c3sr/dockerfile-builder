@@ -1,15 +1,15 @@
 package server
 
 import (
-	"net/http"
+  pb "github.com/c3sr/dockerfile-builder/proto/build/go/_proto/raiprojectcom/docker"
+  "net/http"
 
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/grpclog"
+  "google.golang.org/grpc"
+  "google.golang.org/grpc/grpclog"
 
-	"github.com/improbable-eng/grpc-web/go/grpcweb"
-	echo "github.com/labstack/echo"
-	"github.com/rai-project/config"
-	pb "github.com/c3sr/dockerfile-builder/proto/build/go/_proto/raiprojectcom/docker"
+  "github.com/improbable-eng/grpc-web/go/grpcweb"
+  echo "github.com/labstack/echo"
+  "github.com/rai-project/config"
 )
 
 type dockerBuildRequest struct {

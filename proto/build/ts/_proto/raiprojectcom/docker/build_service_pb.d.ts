@@ -1,5 +1,5 @@
 // package: raiprojectcom.docker
-// file: raiprojectcom/docker/build_service.proto
+// file: build_service.proto
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
@@ -47,6 +47,9 @@ export class DockerBuildRequest extends jspb.Message {
   getPushOptions(): PushOptions | undefined;
   setPushOptions(value?: PushOptions): void;
 
+  getArch(): string;
+  setArch(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DockerBuildRequest.AsObject;
   static toObject(includeInstance: boolean, msg: DockerBuildRequest): DockerBuildRequest.AsObject;
@@ -63,6 +66,7 @@ export namespace DockerBuildRequest {
     imageName: string,
     content: string,
     pushOptions?: PushOptions.AsObject,
+    arch: string,
   }
 }
 
