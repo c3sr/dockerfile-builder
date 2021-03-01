@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.dockerfile_builder_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerfile_builder_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/bindata_assetfs.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/bindata_assetfs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dockerbuild.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/dockerbuild.go" afterDir="false" />
     </list>
@@ -78,7 +77,7 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build and serve" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+    <configuration name="go build and serve" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="dockerfile-builder" />
       <working_directory value="$PROJECT_DIR$" />
       <parameters value="serve" />
@@ -87,6 +86,7 @@
       <package value="github.com/rai-project/dockerfile-builder" />
       <directory value="$PROJECT_DIR$" />
       <method v="2">
+        <option name="GoBeforeRunTask" command="clean" />
         <option name="GoBeforeRunTask" command="get" />
         <option name="GoBeforeRunTask" command="build" />
       </method>
@@ -102,11 +102,6 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Go Build.go build and serve" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -127,6 +122,7 @@
       <workItem from="1613156311031" duration="136000" />
       <workItem from="1613408119839" duration="1097000" />
       <workItem from="1613409329664" duration="4827000" />
+      <workItem from="1614619844697" duration="6680000" />
     </task>
     <servers />
   </component>
@@ -159,20 +155,51 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/server/dockerbuild.go</url>
-          <line>107</line>
+          <line>108</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/server/dockerbuild.go</url>
-          <line>145</line>
-          <option name="timeStamp" value="21" />
+          <line>176</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/root.go</url>
+          <line>74</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../../../pkg/mod/github.com/rai-project/config@v0.0.0-20190813184513-6c3229b03e81/init.go</url>
+          <line>93</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../../../pkg/mod/github.com/rai-project/config@v0.0.0-20190813184513-6c3229b03e81/init.go</url>
+          <line>71</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../../../pkg/mod/github.com/rai-project/config@v0.0.0-20190813184513-6c3229b03e81/config.go</url>
+          <line>159</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/../../../../pkg/mod/github.com/rai-project/config@v0.0.0-20190813184513-6c3229b03e81/app.go</url>
+          <line>73</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="GoApplicationRunConfiguration">
-        <watch expression="req.Arch" language="go" />
+        <watch expression="req.Arch" />
         <watch expression="serverArch" language="go" />
+        <watch expression="appSecret" language="go" />
+        <watch expression="secretFile" language="go" />
+        <watch expression="opts[0]" language="go" />
+        <watch expression="options.AppSecret" language="go" />
+        <watch expression="opts.ConfigFileBaseName" language="go" />
+        <watch expression="DefaultAppSecret" language="go" />
       </configuration>
     </watches-manager>
   </component>

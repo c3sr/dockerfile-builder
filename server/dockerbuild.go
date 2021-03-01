@@ -103,11 +103,21 @@ func UploadCmd(imageName, content string, userName string, password string) (err
 
 }
 
+// Called by web service
 func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.DockerService_BuildServer) (err error) {
 	messages := make(chan string)
 	if req.Id == "" || !bson.IsObjectIdHex(req.Id) {
 		req.Id = bson.NewObjectId().Hex()
 	}
+
+  switch req.Arch {
+  case "Power":
+    SetServerArch("ppc64le")
+  case "Z":
+    SetServerArch("s390x") // Don't know if this works yet
+  case "AMD64":
+    SetServerArch("amd64")
+  }
 
 	go func() {
 		for msg := range messages {
@@ -142,15 +152,6 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
 
 func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 	id := req.Id
-
-  switch req.Arch {
-  case "Power":
-    SetServerArch("ppc64le")
-  case "Z":
-   SetServerArch("s390x") // Don't know if this works yet
-  case "AMD64":
-    SetServerArch("amd64")
-  }
 
 	messages <- colored.Add(color.FgGreen).Sprintf("✱") + colored.Sprintf(" Submitting your docker build")
 
@@ -201,7 +202,7 @@ func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 
 	uploadKey := Config.UploadDestinationDirectory + "/" + id + ".tar.gz"
 
-	uploadKey, err = st.UploadFrom(
+	uploadKey, err = st.UploadFrom( // error happens here
 		bytes.NewReader(gzipBytes),
 		uploadKey,
 		s3.Lifetime(time.Hour),
