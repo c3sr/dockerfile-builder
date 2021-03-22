@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.dockerfile_builder_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerfile_builder_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/bindata_assetfs.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/bindata_assetfs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dockerbuild.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/dockerbuild.go" afterDir="false" />
-    </list>
+    <list default="true" id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,6 +118,7 @@
       <workItem from="1613408119839" duration="1097000" />
       <workItem from="1613409329664" duration="4827000" />
       <workItem from="1614619844697" duration="6680000" />
+      <workItem from="1614627083578" duration="56000" />
     </task>
     <servers />
   </component>
@@ -193,13 +189,13 @@
     <watches-manager>
       <configuration name="GoApplicationRunConfiguration">
         <watch expression="req.Arch" />
-        <watch expression="serverArch" language="go" />
-        <watch expression="appSecret" language="go" />
-        <watch expression="secretFile" language="go" />
-        <watch expression="opts[0]" language="go" />
-        <watch expression="options.AppSecret" language="go" />
-        <watch expression="opts.ConfigFileBaseName" language="go" />
-        <watch expression="DefaultAppSecret" language="go" />
+        <watch expression="serverArch" />
+        <watch expression="appSecret" />
+        <watch expression="secretFile" />
+        <watch expression="opts[0]" />
+        <watch expression="options.AppSecret" />
+        <watch expression="opts.ConfigFileBaseName" />
+        <watch expression="DefaultAppSecret" />
       </configuration>
     </watches-manager>
   </component>
