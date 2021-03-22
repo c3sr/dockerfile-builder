@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1743a959-b012-4d80-a3f5-ea704b70092c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.dockerfile_builder_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerfile_builder_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/root.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +69,20 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="go build and serve" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="dockerfile-builder" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <parameters value="serve" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="github.com/rai-project/dockerfile-builder" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="GoBeforeRunTask" command="clean" />
+        <option name="GoBeforeRunTask" command="get" />
+      </method>
+    </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="dockerfile-builder" />
       <working_directory value="$PROJECT_DIR$" />
@@ -97,6 +111,7 @@
       <workItem from="1612814121127" duration="800000" />
       <workItem from="1613079753194" duration="1529000" />
       <workItem from="1613855187952" duration="928000" />
+      <workItem from="1616386728960" duration="1607000" />
     </task>
     <servers />
   </component>
@@ -123,15 +138,5 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="539" y="395" key="#GOROOT" timestamp="1612814129472">
-      <screen x="67" y="27" width="1373" height="873" />
-    </state>
-    <state x="539" y="395" key="#GOROOT/67.27.1373.873@67.27.1373.873" timestamp="1612814129472" />
-    <state x="295" y="77" width="841" height="602" key="find.popup" timestamp="1613080450814">
-      <screen x="67" y="27" width="1373" height="873" />
-    </state>
-    <state x="295" y="77" width="841" height="602" key="find.popup/67.27.1373.873@67.27.1373.873" timestamp="1613080450814" />
   </component>
 </project>

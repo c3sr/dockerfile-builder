@@ -72,7 +72,7 @@ func initConfig() {
 	opts := []config.Option{
 		config.AppName("dockerfile-builder"),
 		config.ColorMode(true),
-		config.ConfigString(_escFSMustString(false, "/.dockerfile_builder_config.yml")),
+		config.ConfigString(_escFSMustString(true, "/.dockerfile_builder_config.yml")),
 	}
 	if appSecret == "" {
 		if secretFile, err := homedir.Expand("~/.rai_secret"); err == nil && com.IsFile(secretFile) {
