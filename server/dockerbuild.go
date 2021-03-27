@@ -1,29 +1,28 @@
 package server
 
 import (
-	"bytes"
-	"encoding/base64"
-	"fmt"
-	"strings"
-	"time"
+  "bytes"
+  "encoding/base64"
+  "fmt"
+  "strings"
+  "time"
 
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/fatih/color"
-	"github.com/pkg/errors"
-	"gopkg.in/mgo.v2/bson"
+  "github.com/aws/aws-sdk-go/aws/session"
+  "github.com/fatih/color"
+  "github.com/pkg/errors"
+  "gopkg.in/mgo.v2/bson"
 
-	"github.com/rai-project/aws"
-	"github.com/rai-project/broker"
-	"github.com/rai-project/broker/sqs"
-	"github.com/rai-project/broker/rabbitmq"
-	"github.com/rai-project/config"
-	pb "github.com/c3sr/dockerfile-builder/proto/build/go/_proto/raiprojectcom/docker"
-	"github.com/rai-project/model"
-	"github.com/rai-project/pubsub"
-	"github.com/rai-project/pubsub/redis"
-	"github.com/rai-project/serializer/json"
-	"github.com/rai-project/store"
-	"github.com/rai-project/store/s3"
+  pb "github.com/c3sr/dockerfile-builder/proto/build/go/_proto/raiprojectcom/docker"
+  "github.com/rai-project/aws"
+  "github.com/rai-project/broker"
+  "github.com/rai-project/broker/sqs"
+  "github.com/rai-project/config"
+  "github.com/rai-project/model"
+  "github.com/rai-project/pubsub"
+  "github.com/rai-project/pubsub/redis"
+  "github.com/rai-project/serializer/json"
+  "github.com/rai-project/store"
+  "github.com/rai-project/store/s3"
 )
 
 type dockerbuildService struct {
@@ -115,8 +114,10 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
     SetServerArch("ppc64le")
   case "Z":
     SetServerArch("s390x") // Don't know if this works yet
+    Config.BrokerQueueName = "rai_leihao"
   case "AMD64":
-    SetServerArch("amd64")
+    //SetServerArch("amd64")
+    //Config.BrokerQueueName = "rai_amd64_ece408"
   }
 
 	go func() {
@@ -171,13 +172,13 @@ func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 
 	messages <- colored.Add(color.FgGreen).Sprintf("✱") + colored.Sprintf(" Creating docker build session")
 	var session *session.Session
-	if serverArch == "s390x" {
-		session, err = aws.NewSession(
-			aws.Region(aws.AWSRegionUSEast1),
-			aws.AccessKey(aws.Config.AccessKey),
-			aws.SecretKey(aws.Config.SecretKey),
-		)
-	} else {
+	//if serverArch == "s390x" {
+	//	session, err = aws.NewSession(
+	//		aws.Region(aws.AWSRegionUSEast1),
+	//		aws.AccessKey(aws.Config.AccessKey),
+	//		aws.SecretKey(aws.Config.SecretKey),
+	//	)
+	//} else {
 		// Create an AWS session
 		session, err = aws.NewSession(
 			aws.Region(aws.AWSRegionUSEast1),
@@ -185,7 +186,7 @@ func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 			aws.SecretKey(aws.Config.SecretKey),
 			aws.Sts(id),
 		)
-	}
+	//}
 	if err != nil {
 		return
 	}
@@ -241,7 +242,13 @@ func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 				Architecture: "s390x",
 			},
 		}
-	} else {
+	} else if serverArch == "amd64" { // Double check this
+    resources = model.Resources{
+      CPU: model.CPUResources{
+        Architecture: "amd64",
+      },
+    }
+  } else {
 		resources = model.Resources{
 			CPU: model.CPUResources{
 				Architecture: "ppc64le",
@@ -282,18 +289,18 @@ func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 	}
 
 	var brkr broker.Broker
-	if serverArch == "s390x" {
-		brkr = rabbitmq.New(
-			rabbitmq.QueueName(Config.BrokerQueueName),
-			broker.Serializer(serializer),
-		)
-	} else {
+	//if serverArch == "s390x" {
+	//	brkr = rabbitmq.New(
+	//		rabbitmq.QueueName(Config.BrokerQueueName),
+	//		broker.Serializer(serializer),
+	//	)
+	//} else {
 		brkr, err = sqs.New(
 			sqs.QueueName(Config.BrokerQueueName),
 			broker.Serializer(serializer),
 			sqs.Session(session),
 		)
-	}
+	//}
 	if err != nil {
 		return err
 	}
