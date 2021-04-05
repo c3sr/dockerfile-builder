@@ -8,6 +8,12 @@
 }
 
 
+/* Fixes modal misalignment issue */
+.dimmed.dimmable > .ui.modals.dimmer.visible {
+  display: flex !important;
+}
+
+
 /* Color scheme */
 
 .cm-s-rai .CodeMirror {

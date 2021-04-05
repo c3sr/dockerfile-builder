@@ -382,7 +382,6 @@ export default class CodeMirror extends React.Component<Props, State> {
             </Then>
           </If>
           <Menu.Menu position="right">
-            {/* Added => */}
             <Dropdown item simple text="Architecture">
               <Dropdown.Menu>
                 <Dropdown.Item
@@ -396,7 +395,6 @@ export default class CodeMirror extends React.Component<Props, State> {
                 <Dropdown.Item text="AMD64" icon="desktop" onClick={this.handleArchSelectClick} />
               </Dropdown.Menu>
             </Dropdown>
-            {/* <= Added */}
             <Menu.Item name="build" onClick={this.handleBuildIconClick}>
               <Popup trigger={<Icon name="setting" />} content="Build image" />
             </Menu.Item>

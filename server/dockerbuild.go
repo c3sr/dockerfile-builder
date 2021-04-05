@@ -113,11 +113,11 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
   case "Power":
     SetServerArch("ppc64le")
   case "Z":
-    SetServerArch("s390x") // Don't know if this works yet
+    SetServerArch("s390x")
     Config.BrokerQueueName = "rai_leihao"
   case "AMD64":
-    //SetServerArch("amd64")
-    //Config.BrokerQueueName = "rai_amd64_ece408"
+    SetServerArch("amd64")
+    Config.BrokerQueueName = "rai_amd64_ece408"
   }
 
 	go func() {
