@@ -10,7 +10,7 @@ import navbarClicked from "./signals/navbarClicked";
 
 export default {
   state: {
-    name: process.env.APP_NAME || "Docker for everything",
+    name: process.env.APP_NAME || "Dockerfile-Builder",
     state: {
       loading: true,
       saving: false,
@@ -33,7 +33,7 @@ export default {
     editor: {
       currentFile: null,
       mode: "docker",
-      arch: "Docker"
+      arch: null
     }
   },
   signals: {

@@ -382,7 +382,7 @@ export default class CodeMirror extends React.Component<Props, State> {
             </Then>
           </If>
           <Menu.Menu position="right">
-            <Dropdown item simple text="Architecture">
+            <Dropdown id="archSelect" item simple text={this.state.arch || "Architecture"}>
               <Dropdown.Menu>
                 <Dropdown.Item
                   // disabled={!isNil(FileType(files[name].content))}
