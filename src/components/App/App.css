@@ -22,6 +22,7 @@
   font-size: 35px;
   border-radius: 0;
   padding-top: 10px;
+  background: #1b2739;
 }
 
 .App-body {
@@ -36,11 +37,40 @@
   left: 0;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
-  background: #1b1c1d;
+  background: #1b2739;
 }
 
 main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+#ibmImage {
+  display: flex;
+  float: right;
+  justify-content: right;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 30px;
+  height: 40px;
+}
+
+#uiucImage {
+  display: flex;
+  float: right;
+  justify-content: right;
+  align-items: center;
+  padding-left: 20px;
+  /*padding-right: 20px;*/
+  height: 40px;
+  border-left: 1px solid white;
+}
+
+#ibmImage>embed {
+  height: 20px;
+}
+
+#uiucImage>embed {
+  height: 20px;
 }
