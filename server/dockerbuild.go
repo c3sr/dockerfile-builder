@@ -114,7 +114,7 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
     SetServerArch("ppc64le")
   case "Z":
     SetServerArch("s390x")
-    Config.BrokerQueueName = "rai_leihao"
+    Config.BrokerQueueName = "rai_s390x_dfb"
   case "AMD64":
     SetServerArch("amd64")
     Config.BrokerQueueName = "rai_amd64_ece408"
