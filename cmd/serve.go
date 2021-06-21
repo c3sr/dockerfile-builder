@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/rai-project/dockerfile-builder/server"
+	"github.com/c3sr/dockerfile-builder/server"
 	"github.com/spf13/cobra"
 )
 

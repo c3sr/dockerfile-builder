@@ -40,8 +40,7 @@ async.waterfall(
     function(stdout, stderr, cb) {
       if (!stdout) throw new Error("commitId is empty");
       commitId = stdout.replace("\n", "");
-      if (commitId.length !== 40)
-        throw new Error("commitId invalid : " + commitId);
+      if (commitId.length !== 40) throw new Error("commitId invalid : " + commitId);
       var cmd =
         'go-bindata-assetfs -pkg server -nomemcopy -ignore="^.*\\.go|\\.DS_Store" -o ' +
         assetsFileName +
@@ -57,18 +56,9 @@ async.waterfall(
     },
     function(stdout, stderr, cb) {
       fs.appendFileSync(assetsFileName, "\n");
-      fs.appendFileSync(
-        assetsFileName,
-        'var UIReleaseTag = "' + releaseTag + '"\n'
-      );
-      fs.appendFileSync(
-        assetsFileName,
-        'var UIBuildType = "' + buildType + '"\n'
-      );
-      fs.appendFileSync(
-        assetsFileName,
-        'var UICommitID = "' + commitId + '"\n'
-      );
+      fs.appendFileSync(assetsFileName, 'var UIReleaseTag = "' + releaseTag + '"\n');
+      fs.appendFileSync(assetsFileName, 'var UIBuildType = "' + buildType + '"\n');
+      fs.appendFileSync(assetsFileName, 'var UICommitID = "' + commitId + '"\n');
       fs.appendFileSync(assetsFileName, 'var UIVersion = "' + version + '"');
       fs.appendFileSync(assetsFileName, "\n");
       var contents = fs.readFileSync(assetsFileName, "utf8");

@@ -7,7 +7,7 @@ import (
 
        "github.com/Unknwon/com"
        "github.com/pkg/errors"
-       "github.com/rai-project/dockerfile-builder/server"
+       "github.com/c3sr/dockerfile-builder/server"
        "github.com/spf13/cobra"
 )
 

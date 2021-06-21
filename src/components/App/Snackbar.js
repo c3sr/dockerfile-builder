@@ -21,27 +21,19 @@ class ErrorTemplate extends React.Component {
     let message = idx(error, _ => _.body.message);
     let stack = idx(error, _ => _.body.stack);
     if (!isNil(code)) {
-      code = (
-        <code>
-          {code} :: &nbsp;
-        </code>
-      );
+      code = <code>{code} :: &nbsp;</code>;
     }
     if (!isNil(message)) {
-      message = (
-        <b>
-          {message}
-        </b>
-      );
+      message = <b>{message}</b>;
     }
     if (!isNil(stack)) {
       const trace = (
         <Message.List>
-          {stack.map(s =>
+          {stack.map(s => (
             <Message.Item key={yeast()} as="pre" style={{ fontSize: "75%" }}>
               {s}
             </Message.Item>
-          )}
+          ))}
         </Message.List>
       );
       stack = (

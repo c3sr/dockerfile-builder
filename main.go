@@ -1,7 +1,7 @@
 
 package main
 
-import "github.com/rai-project/dockerfile-builder/cmd"
+import "github.com/c3sr/dockerfile-builder/cmd"
 
 func main() {
 	cmd.Execute()

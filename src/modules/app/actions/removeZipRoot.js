@@ -15,7 +15,7 @@ export default function removeZipRoot({ props: { content } }) {
     const fileName = basename(name);
     return {
       content: zipObject([fileName], values(content)),
-      prefix:  join(initial(name.split("/")), "/"),
+      prefix: join(initial(name.split("/")), "/")
     };
   }
 

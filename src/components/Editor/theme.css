@@ -8,6 +8,17 @@
 }
 
 
+/* Fixes modal misalignment issue */
+.dimmed.dimmable > .ui.modals.dimmer.visible {
+  display: flex !important;
+}
+
+/* Set arch select to set width */
+#archSelect {
+  width: 130px;
+  justify-content: center;
+}
+
 /* Color scheme */
 
 .cm-s-rai .CodeMirror {

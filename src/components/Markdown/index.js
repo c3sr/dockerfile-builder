@@ -36,20 +36,14 @@ const compile = marksy({
     ol({ children }) {
       return (
         <List ordered>
-          {children.map(
-            child =>
-              child ? <List.Item key={yeast()}>{child}</List.Item> : null
-          )}
+          {children.map(child => (child ? <List.Item key={yeast()}>{child}</List.Item> : null))}
         </List>
       );
     },
     ul({ children }) {
       return (
         <List>
-          {children.map(
-            child =>
-              child ? <List.Item key={yeast()}>{child}</List.Item> : null
-          )}
+          {children.map(child => (child ? <List.Item key={yeast()}>{child}</List.Item> : null))}
         </List>
       );
     }

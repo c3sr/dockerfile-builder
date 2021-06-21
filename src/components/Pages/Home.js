@@ -25,15 +25,14 @@ export default connect(
             <UploadArea onFileUpload={fileUploaded} />
           </Then>
           <Else>
-            {() =>
+            {() => (
               <If condition={!terminalVisible}>
                 <Then>
                   <Editor />
                 </Then>
-                <Else>
-                  {() => <Terminal />}
-                </Else>
-              </If>}
+                <Else>{() => <Terminal />}</Else>
+              </If>
+            )}
           </Else>
         </If>
       </div>

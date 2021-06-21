@@ -29,8 +29,7 @@ export default class UploadArea extends Component {
         if (isNil(onFileUpload)) {
           return Promise.resolve();
         }
-        const type =
-          currentFile.name === "Dockerfile" ? "text/plain" : "application/zip";
+        const type = currentFile.name === "Dockerfile" ? "text/plain" : "application/zip";
         let reader = new FileReader();
         reader.onloadend = () =>
           binaryStringToBlob(reader.result, type)

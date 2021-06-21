@@ -9,13 +9,15 @@ import {
 } from "../../../proto/build/ts/_proto/raiprojectcom/docker/build_service_pb";
 
 function buildImage({ state, uuid, controller, props }) {
+  let { app } = state.get();
+  let arch = app.editor.arch;
   let { zip, imageName, pushOptions = {} } = props;
-  imageName =
-    imageName || pushOptions.imageName || "dockerbuilder/" + uuid.v4();
+  imageName = imageName || pushOptions.imageName || "dockerbuilder/" + uuid.v4();
   const buildDockerRequest = new DockerBuildRequest();
   buildDockerRequest.setId(uuid.v4());
   buildDockerRequest.setImageName(imageName);
   buildDockerRequest.setContent(zip);
+  buildDockerRequest.setArch(arch || "Power");
   if (!isNil(pushOptions)) {
     const opts = new PushOptions();
     opts.setImageName(imageName);
@@ -23,6 +25,7 @@ function buildImage({ state, uuid, controller, props }) {
     opts.setPassword(pushOptions.password || "");
     buildDockerRequest.setPushOptions(opts);
   }
+  console.log(buildDockerRequest);
   grpc.invoke(DockerService.Build, {
     request: buildDockerRequest,
     host: "/api",

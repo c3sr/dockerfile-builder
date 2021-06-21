@@ -1,4 +1,5 @@
 import appLoaded from "./signals/appLoaded";
+import archChanged from "./signals/archChanged";
 import buildButtonClicked from "./signals/buildButtonClicked";
 import terminalOutputAppended from "./signals/terminalOutputAppended";
 import codeEditorFileChanged from "./signals/codeEditorFileChanged";
@@ -9,7 +10,7 @@ import navbarClicked from "./signals/navbarClicked";
 
 export default {
   state: {
-    name: process.env.APP_NAME || "Docker for Power",
+    name: process.env.APP_NAME || "Dockerfile-Builder",
     state: {
       loading: true,
       saving: false,
@@ -31,7 +32,8 @@ export default {
     },
     editor: {
       currentFile: null,
-      mode: "docker"
+      mode: "docker",
+      arch: null
     }
   },
   signals: {
@@ -42,6 +44,7 @@ export default {
     terminalOutputAppended,
     codeEditorFileChanged,
     codeEditorFilesChanged,
+    archChanged,
     terminalClosed,
     navbarClicked
   }

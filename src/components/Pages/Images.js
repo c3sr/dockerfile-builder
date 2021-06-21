@@ -44,7 +44,9 @@ export default class Images extends React.Component {
       <Table celled striped selectable padded>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell singleLine textAlign="right">ID</Table.HeaderCell>
+            <Table.HeaderCell singleLine textAlign="right">
+              ID
+            </Table.HeaderCell>
             <Table.HeaderCell singleLine textAlign="center">
               Name
             </Table.HeaderCell>

@@ -8,8 +8,7 @@ import { Segment, Icon, Menu, Divider } from "semantic-ui-react";
 import "./themes/afterglow-theme.css";
 
 const Line = styled.div`
-  font-family: Roboto, Consolas, "Lucida Console", Monaco, "Courier New",
-    Courier, monospace, serif;
+  font-family: Roboto, Consolas, "Lucida Console", Monaco, "Courier New", Courier, monospace, serif;
   font-size: 0.8em;
   white-space: pre-wrap;
   line-height: 20px;
@@ -54,9 +53,7 @@ export default connect(
         </Menu>
         <Segment compact attached="bottom" style={{ padding: 0 }}>
           <Term>
-            <div className="afterglow-ansi-theme">
-              {body}
-            </div>
+            <div className="afterglow-ansi-theme">{body}</div>
           </Term>
         </Segment>
       </div>

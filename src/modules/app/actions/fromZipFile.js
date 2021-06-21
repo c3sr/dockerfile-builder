@@ -34,9 +34,7 @@ export default function fromZipFile({ uuid, path, props: { file } }) {
       fileNames = keys(zip.files).filter(ignorer.accepts);
       fileNames = fileNames.filter(fileName => !zip.files[fileName].dir);
       files = pick(zip.files, fileNames);
-      return Promise.all(
-        fileNames.map(fileName => zip.file(fileName).async("string"))
-      );
+      return Promise.all(fileNames.map(fileName => zip.file(fileName).async("string")));
     })
     .then(function(contents) {
       let res = {};
