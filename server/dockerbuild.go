@@ -114,10 +114,10 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
     SetServerArch("ppc64le")
   case "Z":
     SetServerArch("s390x")
-    Config.BrokerQueueName = "dfb_s390x-v1"
+    Config.BrokerQueueName = "dfb_s390x_v1"
   case "AMD64":
     SetServerArch("amd64")
-    Config.BrokerQueueName = "dfb_adm64_aws"
+    Config.BrokerQueueName = "dfb_amd64_aws"
   }
 
 	go func() {
