@@ -79,7 +79,7 @@ before_deploy:
 after_deploy:
 - cf logs dockerfile-builder --recent
 - echo "releasing v${VERSION}..."
-- ghr -t "$GITHUB_TOKEN" -u rai-project -r dockerfile-builder --replace "v${VERSION}"
+- ghr -t "$GITHUB_TOKEN" -u c3sr -r dockerfile-builder --replace "v${VERSION}"
   "${DIST}/latest"
 deploy:
 - provider: bluemixcloudfoundry
@@ -91,7 +91,7 @@ deploy:
   space: dev
   manifest: manifest.yml
   on:
-    repo: rai-project/dockerfile-builder
+    repo: c3sr/dockerfile-builder
 - provider: s3
   access_key_id: AKIAIAFSJLCCOYB5V3EQ
   secret_access_key:
@@ -103,7 +103,7 @@ deploy:
   skip_cleanup: true
   detect_encoding: true
   on:
-    repo: rai-project/dockerfile-builder
+    repo: c3sr/dockerfile-builder
 
 env:
   global:
