@@ -22,10 +22,10 @@ before_install:
 - go env
 - export GOPATH=$HOME/gopath
 - export PATH=$HOME/gopath/bin:$PATH
-- mkdir -p ${GOPATH}/src/github.com/rai-project/dockerfile-builder
-- rsync -az ${TRAVIS_BUILD_DIR}/ ${GOPATH}/src/github.com/rai-project/dockerfile-builder/
-- export TRAVIS_BUILD_DIR=${GOPATH}/src/github.com/rai-project/dockerfile-builder
-- cd ${GOPATH}/src/github.com/rai-project/dockerfile-builder
+- mkdir -p ${GOPATH}/src/github.com/c3sr/dockerfile-builder
+- rsync -az ${TRAVIS_BUILD_DIR}/ ${GOPATH}/src/github.com/c3sr/dockerfile-builder/
+- export TRAVIS_BUILD_DIR=${GOPATH}/src/github.com/c3sr/dockerfile-builder
+- cd ${GOPATH}/src/github.com/c3sr/dockerfile-builder
 - bash scripts/install-protobuf.sh
 install:
 - npm install -g yarn
