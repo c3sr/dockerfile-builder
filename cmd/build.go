@@ -5,9 +5,10 @@ import (
   "bytes"
   "encoding/base64"
   "fmt"
-  "io/ioutil"
-
   "github.com/Unknwon/com"
+  "github.com/rai-project/archive"
+  //"io/ioutil"
+
   "github.com/c3sr/dockerfile-builder/server"
   "github.com/pkg/errors"
   "github.com/spf13/cobra"
@@ -47,21 +48,26 @@ var buildCmd = &cobra.Command{
 	Args:  cobra.MinimumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		dockerFilePath := args[0]
-		if !com.IsFile(dockerFilePath) {
-			fmt.Println("ERROR:: cannot find the dockerfile in %v ", dockerFilePath)
-			return errors.Errorf("cannot find the dockerfile in %v", dockerFilePath)
+
+		if !com.IsDir(dockerFilePath) {
+			fmt.Println("ERROR:: no directory found at path %v", dockerFilePath)
+			return errors.Errorf("no directory found at path %v", dockerFilePath)
 		}
 
-		dockerFileBts, err := ioutil.ReadFile(dockerFilePath)
-		if err != nil {
-			fmt.Println("ERROR: unable to read %v", dockerFilePath)
-			return errors.Wrapf(err, "unable to read %v", dockerFilePath)
-		}
-		zippedDockerFileBts, err := toZip(dockerFileBts)
+		//dockerFileBts, err := ioutil.ReadFile(dockerFilePath)
+		//if err != nil {
+		//	fmt.Println("ERROR: unable to read %v", dockerFilePath)
+		//	return errors.Wrapf(err, "unable to read %v", dockerFilePath)
+		//}
+		//zippedDockerFileBts, err := toZip(dockerFileBts)
+    zippedReader, err := archive.Zip(dockerFilePath)
 		if err != nil {
 			fmt.Println("ERROR: unable to zip %v", dockerFilePath)
 			return errors.Wrapf(err, "unable to zip %v", dockerFilePath)
 		}
+		buf := new(bytes.Buffer)
+		buf.ReadFrom(zippedReader)
+    zippedDockerFileBts := buf.Bytes()
 		dockerFile := base64.StdEncoding.EncodeToString(zippedDockerFileBts)
 		server.SetServerArch(archName)
 		return server.BuildCmd(imageName, dockerFile)

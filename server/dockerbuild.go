@@ -165,10 +165,10 @@ func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 
 	messages <- colored.Add(color.FgGreen).Sprintf("✱") + colored.Sprintf(" Examining submitted files")
 
-	gzipBytes, err := zipBytesToTarBz2(dec)
-	if err != nil {
-		return
-	}
+	//gzipBytes, err := zipBytesToTarBz2(dec)
+	//if err != nil {
+	//	return
+	//}
 
 	messages <- colored.Add(color.FgGreen).Sprintf("✱") + colored.Sprintf(" Creating docker build session")
 	var session *session.Session
@@ -203,8 +203,8 @@ func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 
 	uploadKey := Config.UploadDestinationDirectory + "/" + id + ".tar.gz"
 
-	uploadKey, err = st.UploadFrom( // error happens here
-		bytes.NewReader(gzipBytes),
+	uploadKey, err = st.UploadFrom(
+		bytes.NewReader(dec),
 		uploadKey,
 		s3.Lifetime(time.Hour),
 		store.UploadMetadata(map[string]interface{}{
