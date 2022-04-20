@@ -54,12 +54,6 @@ var buildCmd = &cobra.Command{
 			return errors.Errorf("no directory found at path %v", dockerFilePath)
 		}
 
-		//dockerFileBts, err := ioutil.ReadFile(dockerFilePath)
-		//if err != nil {
-		//	fmt.Println("ERROR: unable to read %v", dockerFilePath)
-		//	return errors.Wrapf(err, "unable to read %v", dockerFilePath)
-		//}
-		//zippedDockerFileBts, err := toZip(dockerFileBts)
     zippedReader, err := archive.Zip(dockerFilePath)
 		if err != nil {
 			fmt.Println("ERROR: unable to zip %v", dockerFilePath)
