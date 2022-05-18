@@ -10,13 +10,13 @@ import {
 
 function buildImage({ state, uuid, controller, props }) {
   let { app } = state.get();
+  let { files, imageName, pushOptions = {} } = props;
   let arch = app.editor.arch;
-  let { zip, imageName, pushOptions = {} } = props;
   imageName = imageName || pushOptions.imageName || "dockerbuilder/" + uuid.v4();
   const buildDockerRequest = new DockerBuildRequest();
   buildDockerRequest.setId(uuid.v4());
   buildDockerRequest.setImageName(imageName);
-  buildDockerRequest.setContent(zip);
+  buildDockerRequest.setContent(JSON.stringify(files));
   buildDockerRequest.setArch(arch || "Power");
   if (!isNil(pushOptions)) {
     const opts = new PushOptions();
@@ -25,7 +25,6 @@ function buildImage({ state, uuid, controller, props }) {
     opts.setPassword(pushOptions.password || "");
     buildDockerRequest.setPushOptions(opts);
   }
-  console.log(buildDockerRequest);
   grpc.invoke(DockerService.Build, {
     request: buildDockerRequest,
     host: "/api",

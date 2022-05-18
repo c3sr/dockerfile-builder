@@ -3,9 +3,14 @@ package server
 import (
   "bytes"
   "encoding/base64"
+  encodeJson "encoding/json"
   "fmt"
+  "github.com/rai-project/archive"
   "strings"
   "time"
+  "io/ioutil"
+  "os"
+  "path/filepath"
 
   "github.com/aws/aws-sdk-go/aws/session"
   "github.com/fatih/color"
@@ -120,6 +125,32 @@ func (service *dockerbuildService) Build(req *pb.DockerBuildRequest, srv pb.Dock
     Config.BrokerQueueName = "dfb_amd64_aws"
   }
 
+  var fileList map[string]map[string]string
+	err = encodeJson.Unmarshal([]byte(req.Content), &fileList)
+	if err != nil {
+    log.WithError(err).Error("Unable to deserialize content")
+  }
+
+  temp, err := ioutil.TempDir("", "tmp_files")
+  for name, info := range fileList {
+    contentBytes := []byte(info["content"])
+    err = os.MkdirAll(filepath.Dir(filepath.Join(temp, name)), 0755)
+    ioutil.WriteFile(filepath.Join(temp, name), contentBytes, 0755)
+    if err != nil {
+      log.WithError(err).Error("Error when writing to temporary directory")
+    }
+  }
+  defer os.RemoveAll(temp)
+
+  zippedReader, err := archive.Zip(temp)
+  if err != nil {
+    log.WithError(err).Error("ERROR: unable to zip temporary directory %v", temp)
+  }
+  buf := new(bytes.Buffer)
+  buf.ReadFrom(zippedReader)
+  zippedDockerFileBts := buf.Bytes()
+  req.Content = base64.StdEncoding.EncodeToString(zippedDockerFileBts)
+
 	go func() {
 		for msg := range messages {
 			e := srv.Send(&pb.DockerBuildResponse{
@@ -164,11 +195,6 @@ func build(req *pb.DockerBuildRequest, messages chan string) (err error) {
 	}
 
 	messages <- colored.Add(color.FgGreen).Sprintf("✱") + colored.Sprintf(" Examining submitted files")
-
-	//gzipBytes, err := zipBytesToTarBz2(dec)
-	//if err != nil {
-	//	return
-	//}
 
 	messages <- colored.Add(color.FgGreen).Sprintf("✱") + colored.Sprintf(" Creating docker build session")
 	var session *session.Session
